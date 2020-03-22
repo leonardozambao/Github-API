@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teste api github</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="Chlebalize/js/jquery-3.4.1.min.js"></script>
+    <script src="Chlebalize/js/lazysizes.min.js"></script>
+    <script src="Chlebalize/js/chlebalize.js"></script>
+    <link rel="stylesheet" href="css/node_modules/css.gg/icons-compressed/icons.css">
+    <link rel="stylesheet" href="Chlebalize/css/chlebalize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">
+                <img src="images/logo.png" alt="Github">
+                <span>Github API</span>
+            </h1>
+        </div>
+    </header>
+    <main>
+        <div id="user">
+            <div class="container">
+                <div class="flex">
+                    <aside>
+                        <figure class="avatar">
+                           <span class="followers" title="Seguidores">{{user.followers}}</span>
+                            <img :src="user.avatar_url" :alt="user.name">
+                        </figure>
+                        <div class="">
+                            <h2>{{user.name}}</h2>
+                            <a :href="user.html_url" class="profile flex-align-center nowrap">Ver Perfil <i class="gg-arrow-right-o"></i></a>
+                        </div>
+                    </aside>
+                    <section>
+                        <ul class="infos">
+                           <li v-show="user.blog !== ''">
+                                <p>
+                                    <i class="gg-website"></i> Blog: <span><a :href="user.blog">{{user.blog}}</a></span>
+                                </p>
+                            </li>
+                            <li v-show="user.bio !== ''">
+                                <p>
+                                    <i class="gg-notes"></i> Bio: <span>{{user.bio}}</span>
+                                </p>
+                            </li>
+                            <li v-show="user.companny !== ''">
+                                <p>
+                                    <i class="gg-directory"></i> Empresa: <span>{{user.company}}</span>
+                                </p>
+                            </li>
+                            <li v-show="user.location !== ''">
+                                <p>
+                                    <i class="gg-pin"></i> Localidade: <span>{{user.location}}</span>
+                                </p>
+                            </li>
+                            <li v-show="user.public_repos !== ''">
+                                <p>
+                                    <i class="gg-brackets"></i> Repositórios Públicos: <span>{{user.public_repos}}</span>
+                                </p>
+                            </li>
+                            
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p class="text-center">Developed by <a href="https://github.com/leonardozambao" target="_blank">Leonardo Zambão</a></p>
+    </footer>
+    <script>
+        new Vue({
+            el: "#user",
+            data: {
+                user: [],
+            },
+            mounted: function() {
+                this.axiosBlog();
+            },
+            methods: {
+                axiosBlog: function() {
+                    axios
+                        .get('https://api.github.com/users/leonardozambao')
+                        .then(response => {
+                            this.user = response.data;
+                            console.log(this.user);
+                        })
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

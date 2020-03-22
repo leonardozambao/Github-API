@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+html{font-family: 'Roboto', sans-serif;}
+a:hover{text-decoration: underline}
+header{padding: 15px 0}
+[class*="flex"].nowrap{-ms-flex-wrap: nowrap;flex-wrap: nowrap}
+#user{max-width: 768px;margin: 0 auto}
+.logo img{width: 50px}
+.avatar{margin: 30px 0 10px;width: 200px;height: 200px;position: relative;}
+.avatar .followers{position: absolute;bottom: 3px;right: 3px;background-color: #696969;color: #fff;border-radius: 50%;width: 20px;height: 20px;padding: 1px;text-align: center;}
+.avatar img{width: 100%;height: 100%;-o-object-fit: cover;object-fit: cover;border-radius: 50%;}
+.profile i{margin-left: 5px}
+#user section{padding: 50px 20px 0;-webkit-box-flex: 1;-ms-flex: 1 1 auto;flex: 1 1 auto}
+.infos li{margin-bottom: 10px;text-align: right}
+.infos li i{display: inline-block;vertical-align: middle}
+footer{padding: 15px;border-top: solid 1px #c6c6c6;margin-top: 15px}
